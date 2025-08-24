@@ -1,0 +1,88 @@
+{
+  "name": "Document",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Document title or filename"
+    },
+    "content": {
+      "type": "string",
+      "description": "Extracted text content"
+    },
+    "file_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "pdf",
+        "audio"
+      ],
+      "description": "Type of uploaded file"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "URL of the uploaded file"
+    },
+    "summary": {
+      "type": "string",
+      "description": "AI-generated summary"
+    },
+    "translations": {
+      "type": "object",
+      "description": "Translated versions in different languages",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "quiz": {
+      "type": "object",
+      "description": "AI-generated quiz questions",
+      "properties": {
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "A": {
+                    "type": "string"
+                  },
+                  "B": {
+                    "type": "string"
+                  },
+                  "C": {
+                    "type": "string"
+                  },
+                  "D": {
+                    "type": "string"
+                  }
+                }
+              },
+              "correct_answer": {
+                "type": "string"
+              },
+              "explanation": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Original document language"
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "file_type"
+  ]
+}
